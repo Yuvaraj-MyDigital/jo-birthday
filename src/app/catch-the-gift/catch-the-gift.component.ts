@@ -34,7 +34,7 @@ export class CatchTheGiftComponent implements OnInit {
       answer: 'Joshika',
     },    {
       question: "What does Could be the joey's favour while meet you first  ",
-      options: ['Giving u gift', 'Shake hands', 'Get U Flower', 'Have a hug','Ego'],
+      options: ['Giving u gift', 'Shake hands', 'Get U Flower', 'Have a hug'],
       answer: 'Get U Flower',
     },
    {
