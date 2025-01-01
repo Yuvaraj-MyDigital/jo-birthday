@@ -1,0 +1,34 @@
+<div class="quiz-container" style="height: 80vh; overflow-y: scroll;">
+    <h1 class="quiz-title">Friendship Tales</h1>
+
+    <!-- Result message when game is over -->
+    <h2 *ngIf="gameOver" class="result-message">{{ message }}</h2>
+
+    <!-- Question section when game is not over -->
+    <div *ngIf="!gameOver" style="max-height: 50vh;">
+        <p class="question-text">{{ questions[currentQuestionIndex]['question']}}</p>
+
+        <!-- Options buttons -->
+        <div class="options" style="max-height: 70vh;">
+            <button 
+                *ngFor="let option of questions[currentQuestionIndex]?.options" 
+                (click)="selectAnswer(option)"
+                [ngClass]="{
+                    'selected': selectedAnswer === option, 
+                    'correct': answerStatus === 'correct' && selectedAnswer === option,
+                    'incorrect': answerStatus === 'incorrect' && selectedAnswer === option,
+                    'correct-option': answerStatus === 'incorrect' && questions[currentQuestionIndex].answer === option
+                }">
+                {{ option }}
+            </button>
+        </div>
+    </div>
+
+    <!-- Play Again button when game is over -->
+    <div *ngIf="gameOver">
+        <button (click)="restartGame()">Play Again</button>
+    </div>
+    <div *ngIf="gameOver">
+        <button (click)="nextGame()">Catch Next</button>
+    </div>
+</div>

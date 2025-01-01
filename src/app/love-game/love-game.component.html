@@ -1,0 +1,24 @@
+<div class="game-container">
+    <!-- Scenario text -->
+    <p *ngIf="!showProposal" class="scenario-text">{{ scenarios[currentScenarioIndex]['text'] }}</p>
+  
+    <!-- Feedback after each scenario -->
+    <p *ngIf="showFeedback && !showProposal" class="feedback-message">{{ scenarios[currentScenarioIndex]['feedback'] }}</p>
+  
+    <!-- Button to move to the next step -->
+    <button *ngIf="!showProposal" (click)="nextStep()" class="next-btn">
+      {{ showFeedback ? 'Next' : 'Continue' }}
+    </button>
+  
+    <!-- Final Proposal Scene -->
+    <div *ngIf="showProposal" class="proposal">
+      <h1 class="proposal-title">Joshika, I love you!</h1>
+      <p class="proposal-message">
+        From the depths of my heart, I’ve dreamed of this moment. You are my soulmate, my light, and my forever. <br />
+      </p>
+    </div>
+    <div *ngIf="showProposal">
+        <button (click)="nextGame()">Catch Next</button>
+    </div>
+  </div>
+  

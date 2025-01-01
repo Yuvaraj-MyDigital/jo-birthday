@@ -1,0 +1,61 @@
+<div class="container-fluid p-0 m-0"> 
+    <div class="row align-items-center m-0 p-0" style="height: 100%;"> 
+      <div class="col-12" *ngIf="audioIncrement < 3"> 
+        <div class="row justify-content-center mt-2"> 
+          <div class="d-flex justify-content-center align-items-center col-md-6 col-lg-4 mt-2 "> 
+            <div class="cd-container"> 
+              <img class="card-img" [src]="audioDetails[audioIncrement].cover" alt="movie"> 
+            </div> 
+          </div> 
+        </div> 
+        <div class="row justify-content-center mt-3"> 
+          <div class="col-md-8"> 
+            <h3 class="text-center">{{ audioDetails[audioIncrement].name }}</h3> 
+          </div> 
+        </div> 
+        <div class="row justify-content-center mt-3"> 
+          <div class="col-md-10"> 
+            <audio #audioControl id="audioControl" (timeupdate)="updateTime()" class="h-0 w-0 m-0 p-0" controls hidden> 
+              <source [src]="audioDetails[audioIncrement].url" /> 
+            </audio> 
+            <div class="time-bar-container"> 
+              <span>{{ currentTime ? formatTime(currentTime) : '00:00' }}</span> 
+              <input type="range" min="0" [max]="duration" [value]="currentTime" (input)="onSeek($event)" class="time-bar" /> 
+              <span>{{ duration ? formatTime(duration) : '00:00' }}</span> 
+            </div> 
+          </div> 
+        </div> 
+        <div class="row justify-content-center mt-3"> 
+          <div class="d-flex justify-content-center align-items-center col-md-12"> 
+            <button class="nav-button" (click)="playpreviousAudio()"> 
+              <span class="chevron-left"></span> 
+            </button> 
+            <button class="play-button" (click)="togglePlayPause()"> 
+              <span class="play-icon" *ngIf="!isPlaying"></span> 
+              <span class="pause-icon" *ngIf="isPlaying"><div></div><div></div></span> 
+            </button> 
+            <button class="nav-button" (click)="nextAudio()"> 
+              <span class="chevron-right"></span> 
+            </button> 
+          </div> 
+        </div> 
+      </div> 
+      <div class="col-12" *ngIf="audioIncrement == 3"> 
+        <app-catch-the-gift></app-catch-the-gift> 
+      </div> 
+      <div class="col-12" *ngIf="audioIncrement == 4"> 
+        <app-love-game></app-love-game> 
+      </div> 
+      <div class="col-12" *ngIf="audioIncrement == 5"> 
+        <div class="container mt-2" style="height: 100%;" >
+          <div class="d-flex justify-content-center align-items-center">
+            <iframe src="https://drive.google.com/file/d/1ljnVN2_IA5xIyBc88nVk5ui5Mzpg_4xl/preview" width="100%" height="480" allow="autoplay"></iframe>
+        </div>
+        </div>
+      </div> 
+    </div> 
+  </div> 
+  
+  <footer class="footer"> 
+    <p class="footer-text">Happy Birthday, Joshika! 💖</p> 
+  </footer>
